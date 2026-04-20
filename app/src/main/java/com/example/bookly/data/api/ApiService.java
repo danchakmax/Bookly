@@ -14,7 +14,7 @@ import retrofit2.http.*;
 
 public interface ApiService {
 
-    // ───────── AUTH (🔥 ДОДАНО) ─────────
+    // ───────── AUTH  ─────────
 
     @POST("auth/v1/signup")
     Call<Map<String, Object>> signUp(
@@ -161,5 +161,13 @@ public interface ApiService {
             @Header("apikey") String apiKey,
             @Header("Authorization") String token,
             @Query("id") String idEq
+    );
+    @POST("storage/v1/object/avatars/{fileName}")
+    Call<Map<String, String>> uploadAvatar(
+            @Header("apikey") String apiKey,
+            @Header("Authorization") String token,
+            @Header("Content-Type") String contentType,
+            @Path("fileName") String fileName,
+            @Body okhttp3.RequestBody file
     );
 }

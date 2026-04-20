@@ -100,15 +100,40 @@ public class UserRepository {
     public void deleteUser(int id, String token, Callback1<Void> callback) {
         api.deleteUser(apiKey, RetrofitClient.bearerToken(token), "eq." + id)
                 .enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) callback.onSuccess(null);
-                else callback.onError("Помилка видалення: " + response.code());
-            }
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                callback.onError(t.getMessage());
-            }
-        });
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) callback.onSuccess(null);
+                        else callback.onError("Помилка видалення: " + response.code());
+                    }
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        callback.onError(t.getMessage());
+                    }
+                });
+    }
+    public void uploadFile(String fileName, byte[] fileBytes, String token, Callback1<String> callback) {
+        okhttp3.RequestBody body = okhttp3.RequestBody.create(fileBytes, okhttp3.MediaType.parse("image/jpeg"));
+        api.uploadAvatar(apiKey, RetrofitClient.bearerToken(token), "image/jpeg", fileName, body)
+                .enqueue(new Callback<Map<String, String>>() {
+                    @Override
+                    public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
+                        if (response.isSuccessful()) {
+                            String url = "https://nmpizxdmoyjszttpyaya.supabase.co/storage/v1/object/public/avatars/" + fileName;
+                            callback.onSuccess(url);
+                        } else {
+                            try {
+                                String errorBody = response.errorBody().string();
+                                android.util.Log.e("BOOKLY_DEBUG", "Supabase error: " + errorBody);
+                                callback.onError("Помилка: " + errorBody);
+                            } catch (Exception e) {
+                                callback.onError("Помилка завантаження: " + response.code());
+                            }
+                        }
+
+                    }
+                    @Override public void onFailure(Call<Map<String, String>> call, Throwable t) {
+                        callback.onError(t.getMessage());
+                    }
+                });
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide; // Не забудь додати імпорт
 import com.example.bookly.R;
 import com.example.bookly.data.api.SharedPrefsManager;
 import com.example.bookly.data.model.User;
@@ -59,16 +60,30 @@ public class ProfileFragment extends Fragment {
     private void loadProfile() {
         profileUseCase.getUserById(prefs.getUserId(), prefs.getToken(),
                 new ProfileUseCase.ProfileCallback() {
-            @Override
-            public void onSuccess(User user) {
-                if (getActivity() != null) getActivity().runOnUiThread(() -> {
-                    tvName.setText(user.getName());
-                    tvEmail.setText(user.getEmail());
-                    tvCity.setText(user.getCity() != null ? user.getCity() : "");
-                    tvAbout.setText(user.getAbout() != null ? user.getAbout() : "");
+                    @Override
+                    public void onSuccess(User user) {
+                        if (getActivity() != null) getActivity().runOnUiThread(() -> {
+                            tvName.setText(user.getName());
+                            tvEmail.setText(user.getEmail());
+                            tvCity.setText(user.getCity() != null ? user.getCity() : "");
+                            tvAbout.setText(user.getAbout() != null ? user.getAbout() : "");
+
+                            String photoUrl = user.getPhotoUrl();
+                            if (photoUrl != null && !photoUrl.isEmpty()) {
+                                Glide.with(ProfileFragment.this)
+                                        .load(photoUrl)
+                                        .circleCrop() // Робить фото круглим
+                                        .placeholder(R.drawable.ic_book_placeholder)
+                                        .error(R.drawable.ic_book_placeholder)
+                                        .into(imgAvatar);
+                            } else {
+                                imgAvatar.setImageResource(R.drawable.ic_book_placeholder);
+                            }
+                        });
+                    }
+                    @Override public void onError(String message) {
+                    }
                 });
-            }
-            @Override public void onError(String message) {}
-        });
     }
 }
+

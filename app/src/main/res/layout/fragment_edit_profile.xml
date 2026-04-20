@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -18,6 +19,37 @@
                     android:textStyle="bold" android:textColor="@color/text_primary"
                     android:layout_marginBottom="20dp"/>
 
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="24dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivProfilePhoto"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_book_placeholder"
+                        android:background="@color/white"
+                        android:padding="2dp"
+                        app:strokeColor="@color/primary"
+                        app:strokeWidth="2dp"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+                        app:cornerSize="60dp" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btnChangePhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:src="@android:drawable/ic_menu_camera"
+                        app:fabCustomSize="40dp"
+                        app:tint="@color/white"
+                        app:backgroundTint="@color/primary"
+                        app:elevation="4dp"
+                        app:borderWidth="0dp"/>
+                </FrameLayout>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Email:" android:textColor="@color/text_secondary"
                     android:layout_marginBottom="4dp"/>
