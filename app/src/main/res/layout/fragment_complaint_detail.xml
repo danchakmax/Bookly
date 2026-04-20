@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
+
+        <!-- Header -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Розгляд скарги" android:textSize="20sp" android:textStyle="bold"
+            android:textColor="@color/white" android:background="@color/primary"
+            android:padding="16dp" android:layout_marginBottom="12dp"/>
+
+        <!-- Complaint text card -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" style="@style/BooklyCard"
+            android:layout_marginBottom="10dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Скарга:" android:textStyle="bold"
+                    android:textColor="@color/text_secondary" android:textSize="12sp"
+                    android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/tvComplaintText" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/text_primary"
+                    android:textSize="15sp" android:text=""/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/divider" android:layout_marginVertical="10dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Дата:" android:textStyle="bold"
+                    android:textColor="@color/text_secondary" android:textSize="12sp"
+                    android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/tvDate" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/text_primary"
+                    android:text=""/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Book info card -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" style="@style/BooklyCard"
+            android:layout_marginBottom="10dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Книга:" android:textStyle="bold"
+                    android:textColor="@color/text_secondary" android:textSize="12sp"
+                    android:layout_marginBottom="6dp"/>
+                <TextView android:id="@+id/tvBookTitle" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/text_primary"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:layout_marginBottom="4dp" android:text=""/>
+                <TextView android:id="@+id/tvBookAuthor" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="8dp" android:text=""/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Опис:" android:textStyle="bold"
+                    android:textColor="@color/text_secondary" android:textSize="12sp"
+                    android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/tvBookDescription" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/text_primary"
+                    android:text=""/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Complainant card -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" style="@style/BooklyCard"
+            android:layout_marginBottom="20dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Заявник:" android:textStyle="bold"
+                    android:textColor="@color/text_secondary" android:textSize="12sp"
+                    android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/tvComplainantName" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/text_primary"
+                    android:text=""/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Action buttons -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button android:id="@+id/btnReject" android:layout_width="0dp"
+                android:layout_height="48dp" android:layout_weight="1"
+                android:text="Відхилити" style="@style/BooklyButtonOutlined"
+                android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnAccept" android:layout_width="0dp"
+                android:layout_height="48dp" android:layout_weight="1"
+                android:text="Видалити оголошення" android:backgroundTint="#B00020"
+                style="@style/BooklyButton"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

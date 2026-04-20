@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content" style="@style/BooklyCard">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="20dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Додати оголошення" android:textSize="20sp"
+                    android:textStyle="bold" android:textColor="@color/text_primary"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Photo -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Фото книги:" android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="6dp"/>
+                <ImageView android:id="@+id/imgPhoto" android:layout_width="120dp"
+                    android:layout_height="160dp" android:src="@drawable/ic_book_placeholder"
+                    android:scaleType="centerCrop" android:background="@color/divider"
+                    android:layout_marginBottom="8dp"/>
+                <Button android:id="@+id/btnPickPhoto" android:layout_width="wrap_content"
+                    android:layout_height="40dp" android:text="Додати фото"
+                    style="@style/BooklyButtonOutlined" android:layout_marginBottom="16dp"/>
+
+                <!-- Title -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Назва книги:" android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/etTitle" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:inputType="textCapSentences"
+                    android:hint="Введіть назву" android:background="@drawable/input_background"
+                    android:padding="12dp" android:layout_marginBottom="14dp"/>
+
+                <!-- Author -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Автор книги:" android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/etAuthor" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:inputType="textPersonName"
+                    android:hint="Ім'я автора" android:background="@drawable/input_background"
+                    android:padding="12dp" android:layout_marginBottom="14dp"/>
+
+                <!-- Genre spinner -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Жанр:" android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp"/>
+                <Spinner android:id="@+id/spinnerGenre" android:layout_width="match_parent"
+                    android:layout_height="48dp" android:background="@drawable/input_background"
+                    android:layout_marginBottom="14dp"/>
+
+                <!-- Deal type radio -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Тип угоди:" android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp"/>
+                <RadioGroup android:id="@+id/rgDealType" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:layout_marginBottom="14dp">
+                    <RadioButton android:id="@+id/rbExchange" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="Обмін"
+                        android:textColor="@color/text_primary" android:checked="true"
+                        android:buttonTint="@color/primary"/>
+                    <RadioButton android:id="@+id/rbDonation" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="Безкоштовно"
+                        android:textColor="@color/text_primary" android:layout_marginStart="16dp"
+                        android:buttonTint="@color/primary"/>
+                </RadioGroup>
+
+                <!-- Description -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Опис:" android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp"/>
+                <EditText android:id="@+id/etDescription" android:layout_width="match_parent"
+                    android:layout_height="120dp" android:inputType="textMultiLine"
+                    android:hint="Стан книги, деталі..." android:background="@drawable/input_background"
+                    android:padding="12dp" android:gravity="top" android:layout_marginBottom="20dp"/>
+
+                <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_gravity="center"
+                    android:visibility="gone" android:layout_marginBottom="8dp"/>
+
+                <Button android:id="@+id/btnSave" android:layout_width="match_parent"
+                    android:layout_height="48dp" android:text="Зберегти оголошення"
+                    style="@style/BooklyButton"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

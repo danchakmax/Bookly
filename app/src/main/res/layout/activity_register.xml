@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/BooklyToolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BooklyCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Зареєструватись"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="20dp"/>
+
+                    <!-- Name -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Ім'я:" android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+                    <EditText android:id="@+id/etName" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="textPersonName"
+                        android:hint="Ваше ім'я" android:background="@drawable/input_background"
+                        android:padding="12dp" android:layout_marginBottom="14dp"/>
+
+                    <!-- Email -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Електронна пошта:" android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+                    <EditText android:id="@+id/etEmail" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="textEmailAddress"
+                        android:hint="example@email.com" android:background="@drawable/input_background"
+                        android:padding="12dp" android:layout_marginBottom="14dp"/>
+
+                    <!-- Phone -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Телефон:" android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+                    <EditText android:id="@+id/etPhone" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="phone"
+                        android:hint="+380XXXXXXXXX" android:background="@drawable/input_background"
+                        android:padding="12dp" android:layout_marginBottom="14dp"/>
+
+                    <!-- Password -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Пароль:" android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+                    <EditText android:id="@+id/etPassword" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="textPassword"
+                        android:hint="Мінімум 6 символів" android:background="@drawable/input_background"
+                        android:padding="12dp" android:layout_marginBottom="14dp"/>
+
+                    <!-- Region -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Область:" android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+                    <EditText android:id="@+id/etRegion" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="textCapWords"
+                        android:hint="Наприклад: Львівська" android:background="@drawable/input_background"
+                        android:padding="12dp" android:layout_marginBottom="14dp"/>
+
+                    <!-- District -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Район:" android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+                    <EditText android:id="@+id/etDistrict" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="textCapWords"
+                        android:hint="Район" android:background="@drawable/input_background"
+                        android:padding="12dp" android:layout_marginBottom="14dp"/>
+
+                    <!-- City -->
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Населений пункт:" android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+                    <EditText android:id="@+id/etCity" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:inputType="textCapWords"
+                        android:hint="Місто / село" android:background="@drawable/input_background"
+                        android:padding="12dp" android:layout_marginBottom="24dp"/>
+
+                    <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_gravity="center"
+                        android:visibility="gone" android:layout_marginBottom="8dp"/>
+
+                    <Button android:id="@+id/btnCreateAccount" android:layout_width="match_parent"
+                        android:layout_height="48dp" android:text="Створити акаунт"
+                        style="@style/BooklyButton"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

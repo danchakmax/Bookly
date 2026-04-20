@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/BooklyToolbar"/>
+
+    <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_gravity="center"
+        android:visibility="gone"/>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <!-- Avatar + name -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" style="@style/BooklyCard"
+                android:layout_marginBottom="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp" android:gravity="center">
+
+                    <ImageView android:id="@+id/imgAvatar" android:layout_width="80dp"
+                        android:layout_height="80dp" android:src="@android:drawable/ic_menu_myplaces"
+                        android:scaleType="centerCrop" android:layout_marginBottom="8dp"/>
+
+                    <TextView android:id="@+id/tvName" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textSize="20sp"
+                        android:textStyle="bold" android:textColor="@color/text_primary" android:text=""/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Info -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" style="@style/BooklyCard"
+                android:layout_marginBottom="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Основна інформація:" android:textStyle="bold"
+                        android:textColor="@color/text_primary" android:layout_marginBottom="8dp"/>
+                    <TextView android:id="@+id/tvEmail" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textColor="@color/text_secondary"
+                        android:layout_marginBottom="4dp" android:text=""/>
+                    <TextView android:id="@+id/tvCity" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textColor="@color/text_secondary"
+                        android:text=""/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- About -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" style="@style/BooklyCard"
+                android:layout_marginBottom="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Про себе:" android:textStyle="bold"
+                        android:textColor="@color/text_primary" android:layout_marginBottom="8dp"/>
+                    <TextView android:id="@+id/tvAbout" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textColor="@color/text_secondary"
+                        android:text=""/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Books -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Книги користувача:" android:textStyle="bold"
+                android:textColor="@color/text_primary" android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUserBooks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
