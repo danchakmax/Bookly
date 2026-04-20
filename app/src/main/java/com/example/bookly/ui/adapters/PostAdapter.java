@@ -28,6 +28,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     private List<Post> posts = new ArrayList<>();
+    private List<Post> postsFull = new ArrayList<>();
     private final OnPostClickListener listener;
     private final boolean showOwnerActions; // true = мої книги (edit/delete), false = home (complain)
     private Post selectedPost;
@@ -39,7 +40,40 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+        this.postsFull = new ArrayList<>(posts);
         notifyDataSetChanged();
+    }
+
+    public void filter(String text) {
+        List<Post> filteredList = new ArrayList<>();
+        String filterPattern = text.toLowerCase().trim();
+
+        if (filterPattern.isEmpty()) {
+            filteredList.addAll(postsFull); // Якщо пустий пошук — показуємо все
+        } else {
+            for (Post post : postsFull) {
+                // Перевірка назви
+                boolean matchesTitle = post.getTitle() != null &&
+                        post.getTitle().toLowerCase().contains(filterPattern);
+
+                // Перевірка автора
+                boolean matchesAuthor = post.getAuthor() != null &&
+                        post.getAuthor().toLowerCase().contains(filterPattern);
+
+                // Перевірка міста (дістаємо з об'єкта User)
+                boolean matchesCity = false;
+                if (post.getUser() != null && post.getUser().getCity() != null) {
+                    matchesCity = post.getUser().getCity().toLowerCase().contains(filterPattern);
+                }
+
+                if (matchesTitle || matchesAuthor || matchesCity) {
+                    filteredList.add(post);
+                }
+            }
+        }
+
+        this.posts = filteredList;
+        notifyDataSetChanged(); // Оновлюємо RecyclerView
     }
 
     public Post getSelectedPost() { return selectedPost; }

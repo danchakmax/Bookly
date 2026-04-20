@@ -6,7 +6,7 @@ import java.util.List;
 public class Post {
 
     @SerializedName("id")
-    private int id;
+    private Integer id;
 
     @SerializedName("user_id")
     private int userId;
@@ -44,8 +44,8 @@ public class Post {
         this.photoUrl = photoUrl;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
 
     public int getUserId() { return userId; }
     public void setUserId(int userId) { this.userId = userId; }

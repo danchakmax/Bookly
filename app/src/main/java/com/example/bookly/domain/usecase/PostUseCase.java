@@ -97,40 +97,41 @@ public class PostUseCase {
     }
 
     public List<Post> filterPosts(List<Post> posts, String query, String city, String dealType, int genreId) {
-
         List<Post> result = new ArrayList<>();
+        String q = (query != null) ? query.toLowerCase().trim() : "";
 
         for (Post post : posts) {
-
             boolean matchQuery = true;
-            boolean matchCity = true;
+            boolean matchCityFilter = true;
             boolean matchDeal = true;
 
-            if (query != null && !query.trim().isEmpty()) {
-                String q = query.toLowerCase();
+            if (!q.isEmpty()) {
+                boolean inTitle = post.getTitle() != null && post.getTitle().toLowerCase().contains(q);
+                boolean inAuthor = post.getAuthor() != null && post.getAuthor().toLowerCase().contains(q);
 
-                matchQuery =
-                        (post.getTitle() != null && post.getTitle().toLowerCase().contains(q)) ||
-                                (post.getAuthor() != null && post.getAuthor().toLowerCase().contains(q));
+                boolean inCitySearch = false;
+                if (post.getUser() != null && post.getUser().getCity() != null) {
+                    inCitySearch = post.getUser().getCity().toLowerCase().contains(q);
+                }
+
+                matchQuery = inTitle || inAuthor || inCitySearch;
             }
 
             if (city != null && !city.isEmpty()) {
-                matchCity =
-                        post.getUser() != null &&
-                                post.getUser().getCity() != null &&
-                                post.getUser().getCity().equalsIgnoreCase(city);
-            }
-            if (dealType != null && !dealType.isEmpty()) {
-                matchDeal =
-                        post.getDealType() != null &&
-                                post.getDealType().equalsIgnoreCase(dealType);
+                matchCityFilter = post.getUser() != null &&
+                        post.getUser().getCity() != null &&
+                        post.getUser().getCity().equalsIgnoreCase(city);
             }
 
-            if (matchQuery && matchCity && matchDeal) {
+            if (dealType != null && !dealType.isEmpty()) {
+                matchDeal = post.getDealType() != null &&
+                        post.getDealType().equalsIgnoreCase(dealType);
+            }
+
+            if (matchQuery && matchCityFilter && matchDeal) {
                 result.add(post);
             }
         }
-
         return result;
     }
 

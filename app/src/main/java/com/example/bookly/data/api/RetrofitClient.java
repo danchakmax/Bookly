@@ -7,8 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    public static final String BASE_URL = "https://nrtdypabztxvclextrpb.supabase.co/";
-    public static final String API_KEY = "sb_publishable_5YXJ1kakdY3iPD8KT4CKNg_Rtxq6Hrj";
+    public static final String BASE_URL = "https://nmpizxdmoyjszttpyaya.supabase.co";
+    public static final String API_KEY = "sb_publishable_LSmzpn7LYf3bQjc1O6hHsQ_-gZ6R7BM";
 
     private static RetrofitClient instance;
     private final ApiService apiService;

@@ -102,6 +102,9 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+
+        menu.clear();
+
         inflater.inflate(R.menu.home_menu, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
